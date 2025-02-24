@@ -11,7 +11,6 @@ public class AsyncBankTest {
                     INITIAL_BALANCE);
             t.setPriority(Thread.NORM_PRIORITY + i % 2);
             t.start();
-            t.join();
         }
     }
 }
