@@ -13,7 +13,7 @@ class Bank {
         ntransacts = 0;
     }
 
-    public void transfer(int from, int to, int amount) {
+    public synchronized void transfer(int from, int to, int amount) {
         accounts[from] -= amount;
         accounts[to] += amount;
         ntransacts++;
