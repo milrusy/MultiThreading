@@ -21,7 +21,7 @@ class Bank {
             test();
     }
 
-    public void test(){
+    public synchronized void test(){
         int sum = 0;
         for (int account : accounts) sum += account;
         System.out.println("Transactions:" + ntransacts
