@@ -10,7 +10,6 @@ public class AsyncBankTest {
             TransferThread t = new TransferThread(b, i, INITIAL_BALANCE);
             t.setPriority(Thread.NORM_PRIORITY + i % 2);
             t.start();
-            t.join();
         }
     }
 }
