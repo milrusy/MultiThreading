@@ -14,18 +14,22 @@ class Bank {
     }
 
     public void transfer(int from, int to, int amount) {
-        accounts[from] -= amount;
-        accounts[to] += amount;
-        ntransacts++;
-        if (ntransacts % NTEST == 0)
-            test();
+        synchronized (this) {
+            accounts[from] -= amount;
+            accounts[to] += amount;
+            ntransacts++;
+            if (ntransacts % NTEST == 0)
+                test();
+        }
     }
 
     public void test(){
-        int sum = 0;
-        for (int account : accounts) sum += account;
-        System.out.println("Transactions:" + ntransacts
-                + " Sum: " + sum);
+        synchronized (this) {
+            int sum = 0;
+            for (int account : accounts) sum += account;
+            System.out.println("Transactions:" + ntransacts
+                    + " Sum: " + sum);
+        }
     }
 
     public int size(){
